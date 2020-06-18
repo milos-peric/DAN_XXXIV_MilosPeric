@@ -19,11 +19,6 @@ namespace DAN_XXXIV_MilosPeric
             BankThreadFactory.CreateThreads(secondGroupSize, "ATM_2");
         }
 
-        public static void StartExecution()
-        {
-            BankThreadFactory.StartThreads(BankThreadFactory.threads);
-        }
-
         public static int CheckInputData()
         {
             int numericalValue = 0;

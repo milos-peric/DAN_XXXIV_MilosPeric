@@ -10,9 +10,14 @@ namespace DAN_XXXIV_MilosPeric
     static class BankThreadFactory
     {
         private static Random random = new Random();
-        private static BankAccount bankAccount = new BankAccount(10000);
+        private static BankAccount bankAccount = new BankAccount();
         private static readonly object obj = new object();
-        public static List<Thread> threads = new List<Thread>();
+        private static List<Thread> threads = new List<Thread>();
+
+        public static void SetTotalBalance(int balance)
+        {
+            bankAccount.Balance = balance;
+        }
 
         public static void ExecuteWithdrawal()
         {
@@ -23,7 +28,7 @@ namespace DAN_XXXIV_MilosPeric
             }
         }
 
-        public static void StartThreads(List<Thread> threadList)
+        public static void StartThreads()
         {
             foreach (var thread in threads)
             {

@@ -11,10 +11,13 @@ namespace DAN_XXXIV_MilosPeric
     {
         public int Balance { get; set; }
 
-
         public BankAccount(int balance)
         {
             Balance = balance;
+        }
+
+        public BankAccount()
+        {
         }
 
         public void PrintAccountBalance()
