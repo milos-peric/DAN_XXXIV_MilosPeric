@@ -42,8 +42,15 @@ namespace DAN_XXXIV_MilosPeric
                 }
                 else
                 {
-                    numericalValue = value;
-                    isNotCorrectInput = false;
+                    if (value > 0)
+                    {
+                        numericalValue = value;
+                        isNotCorrectInput = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Number must be greather than zero");
+                    }
                 }
             } while (isNotCorrectInput);
             return numericalValue;
