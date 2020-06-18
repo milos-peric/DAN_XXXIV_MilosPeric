@@ -12,7 +12,7 @@ namespace DAN_XXXIV_MilosPeric
         private static Random random = new Random();
         private static BankAccount bankAccount = new BankAccount();
         private static readonly object obj = new object();
-        public static List<Thread> threads = new List<Thread>();
+        private static List<Thread> threads = new List<Thread>();
 
         /// <summary>
         /// Allows user to set Total Balance on Bank Account instance.
