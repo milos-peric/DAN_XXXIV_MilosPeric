@@ -13,7 +13,10 @@ namespace DAN_XXXIV_MilosPeric
         static void Main(string[] args)
         {
             BankThreadFactory.SetTotalBalance(10000);
-            Utility.EnterNumberOfClients();
+            Console.WriteLine("Please enter number of clients for first ATM.");
+            BankThreadFactory.CreateThreads("ATM_1", Utility.EnterNumberOfClients());
+            Console.WriteLine("Please enter number of clients for second ATM.");
+            BankThreadFactory.CreateThreads("ATM_2", Utility.EnterNumberOfClients());
             BankThreadFactory.StartThreads();
             Console.ReadKey();
         }

@@ -11,20 +11,27 @@ namespace DAN_XXXIV_MilosPeric
     {
         public int Balance { get; set; }
 
+        public BankAccount()
+        {
+        }
+
         public BankAccount(int balance)
         {
             Balance = balance;
         }
 
-        public BankAccount()
-        {
-        }
-
+        /// <summary>
+        /// Prints current account balance.
+        /// </summary>
         public void PrintAccountBalance()
         {
             Console.WriteLine("Current Account balance: {0:C}", Balance);
         }
 
+        /// <summary>
+        /// Allows user to withdraw amount from account not greater than balance.
+        /// Also prints current worker thread name.
+        /// </summary>
         public void MakeWithdrawal(int withdrawalAmount)
         {
             if (Balance - withdrawalAmount < 0)

@@ -8,17 +8,21 @@ namespace DAN_XXXIV_MilosPeric
 {
     static class Utility
     {
-        public static void EnterNumberOfClients()
+        /// <summary>
+        /// Allows user to enter number of clients.
+        /// </summary>
+        /// <returns>Number of clients per group</returns>
+        public static int EnterNumberOfClients()
         {
-            Console.Write("Enter number of first client group: ");
-            int firstGroupSize = CheckInputData();
-            Console.WriteLine();
-            Console.Write("Enter number of second client group: ");
-            int secondGroupSize = CheckInputData();
-            BankThreadFactory.CreateThreads(firstGroupSize, "ATM_1");
-            BankThreadFactory.CreateThreads(secondGroupSize, "ATM_2");
+            int GroupSize = CheckInputData();
+            return GroupSize; 
         }
 
+        /// <summary>
+        /// Checks if input is a number, and loops until user enters number
+        /// or presses X to skip to advance program.
+        /// </summary>
+        /// <returns>Validated number of clients.</returns>
         public static int CheckInputData()
         {
             int numericalValue = 0;
@@ -29,7 +33,12 @@ namespace DAN_XXXIV_MilosPeric
                 bool isANumber = Int32.TryParse(input, out int value);
                 if (isANumber == false)
                 {
-                    Console.WriteLine("Please enter a number.");
+                    Console.WriteLine("Please enter a number or press X to skip.");
+                    if (Console.ReadKey().Key == ConsoleKey.X)
+                    {
+                        Console.WriteLine("\nInput skipped...");
+                        break;
+                    }
                 }
                 else
                 {
