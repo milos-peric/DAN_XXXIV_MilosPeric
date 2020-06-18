@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -17,7 +18,7 @@ namespace DAN_XXXIV_MilosPeric
             BankThreadFactory.CreateThreads("ATM_1", Utility.EnterNumberOfClients());
             Console.WriteLine("Please enter number of clients for second ATM.");
             BankThreadFactory.CreateThreads("ATM_2", Utility.EnterNumberOfClients());
-            BankThreadFactory.StartThreads();
+            BankThreadFactory.StartThreadsParallel();
             Console.ReadKey();
         }
 

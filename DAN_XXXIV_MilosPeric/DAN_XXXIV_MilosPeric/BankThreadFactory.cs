@@ -12,7 +12,7 @@ namespace DAN_XXXIV_MilosPeric
         private static Random random = new Random();
         private static BankAccount bankAccount = new BankAccount();
         private static readonly object obj = new object();
-        private static List<Thread> threads = new List<Thread>();
+        public static List<Thread> threads = new List<Thread>();
 
         /// <summary>
         /// Allows user to set Total Balance on Bank Account instance.
@@ -62,5 +62,19 @@ namespace DAN_XXXIV_MilosPeric
                 thread.Start();
             }
         }
+
+        /// <summary>
+        /// Same as above StartThreads method, the only difference is this one uses
+        /// Parralel.For loop instead of foreach.
+        /// </summary>
+        public static void StartThreadsParallel()
+        {
+            Parallel.For(0, threads.Count,
+                index => {
+                    threads.ElementAt(index).Start();
+                });
+        }
+
+
     }
 }
