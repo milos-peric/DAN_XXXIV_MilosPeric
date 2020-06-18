@@ -11,6 +11,7 @@ namespace DAN_XXXIV_MilosPeric
     {
         public int Balance { get; set; }
 
+
         public BankAccount(int balance)
         {
             Balance = balance;
@@ -18,20 +19,21 @@ namespace DAN_XXXIV_MilosPeric
 
         public void PrintAccountBalance()
         {
-            Console.WriteLine("Current Account balance: " + Balance);
+            Console.WriteLine("Current Account balance: {0:C}", Balance);
         }
 
         public void MakeWithdrawal(int withdrawalAmount)
         {
             if (Balance - withdrawalAmount < 0)
             {
-                Console.WriteLine("{1} attempted to raise amount: {0}. Failed to raise desired ammount. Insufficient funds.", withdrawalAmount, Thread.CurrentThread.Name);
+                Console.WriteLine("{0} has failed to withdraw amount: {1:C}. Insufficient funds.", Thread.CurrentThread.Name, withdrawalAmount);
             }
             else
             {
                 Balance -= withdrawalAmount;
-                Console.WriteLine("{0} raised money successfully. Amount raised: {1}.", Thread.CurrentThread.Name, withdrawalAmount);
+                Console.WriteLine("{0} has withdrawn money successfully. Amount raised: {1:C}.", Thread.CurrentThread.Name, withdrawalAmount);
             }
         }
+
     }
 }

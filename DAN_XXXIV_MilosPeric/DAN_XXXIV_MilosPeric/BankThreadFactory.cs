@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace DAN_XXXIV_MilosPeric
 {
-    class Program
+    static class BankThreadFactory
     {
         private static Random random = new Random();
         private static BankAccount bankAccount = new BankAccount(10000);
         private static readonly object obj = new object();
-        private static List<Thread> threads = new List<Thread>();
+        public static List<Thread> threads = new List<Thread>();
 
         public static void ExecuteWithdrawal()
         {
@@ -24,17 +23,23 @@ namespace DAN_XXXIV_MilosPeric
             }
         }
 
-        static void Main(string[] args)
+        public static void StartThreads(List<Thread> threadList)
         {
-            EnterNumberOfClients();
-
-            Console.ReadKey();
+            foreach (var thread in threads)
+            {
+                thread.Start();
+            }
         }
 
-        public static void EnterNumberOfClients()
+        public static void CreateThreads(int firstGroupSize, string terminalName)
         {
-            Utility.EnterNumberOfClients();
-            Utility.StartExecution();
+            for (int i = 1; i <= firstGroupSize; i++)
+            {
+                Thread t = new Thread(new ThreadStart(ExecuteWithdrawal));
+                t.Name = string.Format("{0}_Client_{1}", terminalName, i);
+                threads.Add(t);
+            }
         }
+
     }
 }
